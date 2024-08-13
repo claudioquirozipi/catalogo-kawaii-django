@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <title>Mi tiendita</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <img src="{% static 'img/logo.jpeg' %}" alt="" />
+    </nav>
+    <h1 class="title">Productos</h1>
+    <div class="container">
+      {% for product in products %}
+      <div class="card">
+        {% if product.imagen %}
+        <img class="img" src="{{product.imagen.url}}" alt="{{product.name}}" />
+        {% endif %}
+        <h2 class="name">{{product.name}}</h2>
+        <p class="stock">Disponibles: {{product.stock}}</p>
+        <p class="price">Precio: {{product.price}}</p>
+        <button class="btn">Agregar al carrito</button>
+      </div>
+      {% endfor %}
+    </div>
+    <footer class="footer">
+      <p class="text_footer">Síguenos en</p>
+      <img class="icon" src="{% static 'img/instagram.png' %}" alt="" />
+    </footer>
+  </body>
+</html>
